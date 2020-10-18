@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>表格鼠标经过变色</title>
+    <style>
+      table {
+        width: 800px;
+        margin: 100px auto;
+        text-align: center;
+        border-collapse: collapse;
+        font-size: 24px;
+      }
+      thead tr {
+        height: 30px;
+        background-color: rgb(101, 226, 226);
+      }
+      tbody tr {
+        height: 30px;
+      }
+      tbody td {
+        border-bottom: 1px solid rgb(248, 246, 246);
+        font-style: 12px;
+        color: violet;
+      }
+      .bg {
+        background-color: rgb(228, 120, 19);
+      }
+    </style>
+  </head>
+  <body>
+    <!--案例：用到鼠标事件：鼠标经过 onmouseover 鼠标离开 onmouseout
+        思路：鼠标经过tr行，当前行变换背景颜色，鼠标离开去掉当前背景颜色
+        //注意：第一行（thead里面的行）不需要变换颜色，因此我们获取的是tbody里面的行-->
+    <table>
+      <thead>
+        <tr>
+          <th>代码</th>
+          <th>名称</th>
+          <th>最新公布净值</th>
+          <th>累计净值</th>
+          <th>前单位净值</th>
+          <th>净值增长率</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>003526</td>
+          <td>003526</td>
+          <td>003526</td>
+          <td>003526</td>
+          <td>003526</td>
+          <td>003526</td>
+        </tr>
+        <tr>
+          <td>003526</td>
+          <td>003526</td>
+          <td>003526</td>
+          <td>003526</td>
+          <td>003526</td>
+          <td>003526</td>
+        </tr>
+        <tr>
+          <td>003526</td>
+          <td>003526</td>
+          <td>003526</td>
+          <td>003526</td>
+          <td>003526</td>
+          <td>003526</td>
+        </tr>
+        <tr>
+          <td>003526</td>
+          <td>003526</td>
+          <td>003526</td>
+          <td>003526</td>
+          <td>003526</td>
+          <td>003526</td>
+        </tr>
+        <tr>
+          <td>003526</td>
+          <td>003526</td>
+          <td>003526</td>
+          <td>003526</td>
+          <td>003526</td>
+          <td>003526</td>
+        </tr>
+        <tr>
+          <td>003526</td>
+          <td>003526</td>
+          <td>003526</td>
+          <td>003526</td>
+          <td>003526</td>
+          <td>003526</td>
+        </tr>
+      </tbody>
+    </table>
+    <script>
+      var trs = document.querySelector("tbody").querySelectorAll("tr");
+      for (var i = 0; i < trs.length; i++) {
+        //鼠标经过事件
+        trs[i].onmousemove = function () {
+          this.className = "bg";
+        };
+        //鼠标离开事件
+        trs[i].onmouseout = function () {
+          this.className = "";
+        };
+      }
+    </script>
+  </body>
+</html>

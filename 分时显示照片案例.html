@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      img {
+        width: 400px;
+        height: 400px;
+      }
+      div {
+        width: 100px;
+        height: 50px;
+        text-align: center;
+        line-height: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <img src="images/zyl.jpg" alt="" title="朱一龙" />
+    <div>上午好！</div>
+    <script>
+      var time = new Date();
+      var hour = time.getHours();
+      var img = document.querySelector("img");
+      var div = document.querySelector("div");
+      if (hour < 12) {
+        img.src = "images/zyl.jpg";
+        div.innerHTML = "上午好！";
+      } else if (hour < 18) {
+        img.src = "images/zjl.jpg";
+        div.innerHTML = "下午好！";
+      } else {
+        img.src = "images/zxc.jpg";
+        div.innerHTML = "晚上好！";
+      }
+    </script>
+  </body>
+</html>

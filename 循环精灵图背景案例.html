@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>循环精灵图背景</title>
+    <style>
+      * {
+        padding: 0px;
+        margin: 0px;
+      }
+      li {
+        list-style-type: none;
+      }
+      .box {
+        width: 250px;
+        margin: 100px auto;
+      }
+      .box li {
+        float: left;
+        width: 24px;
+        height: 24px;
+        background-color: pink;
+        margin: 15px;
+        background: url(images/taobao.png) no-repeat;
+      }
+    </style>
+  </head>
+  <body>
+    <!--分析：首先精灵图图片排列是由规律的
+    核心思路：利用for循环，修改精灵图的背景位置 background-position
+             然后用软件测量，得到规律：让for循环里面的i的索引号*44就是每个图片的y坐标-->
+    <div class="box">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <script>
+      //1.获取元素 所有li
+      var lis = document.querySelectorAll("li");
+      for (var i = 0; i < lis.length; i++) {
+        //让索引号*44 就是每个li的背景y坐标
+        var index = i * 44;
+        lis[i].style.backgroundPosition = "0 -" + index + "px"; //因为这里用到的x坐标为0，index是负的，因此，前面要有‘0 -’
+      }
+    </script>
+  </body>
+</html>

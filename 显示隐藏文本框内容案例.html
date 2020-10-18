@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>显示隐藏文本框内容</title>
+    <style>
+      .box {
+        position: relative;
+        width: 300px;
+        height: 50px;
+        line-height: 50px;
+      }
+      .box input {
+        width: 250px;
+        height: 30px;
+        border: 1px solid blue;
+        color: #999;
+      }
+      .box button {
+        position: absolute;
+        top: 8px;
+        right: -1px;
+        width: 45px;
+        height: 35px;
+        color: #ccc;
+        background-color: rgb(72, 63, 189);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <input type="text" value="手机" />
+      <button>搜索</button>
+    </div>
+    <script>
+      //分析：首先表单需要两个新事件 获得焦点事件 onfocus  失去焦点事件 onblur
+      //如果获得焦点，判断表单内容是否为默认文字，是就情况表单内容
+      //如果失去焦点，判断表单内容是否为空，如果为空，则表单内容改为默认文字
+      var text = document.querySelector("input");
+      //获得焦点事件 onfocus
+      text.onfocus = function () {
+        if (text.value === "手机") {
+          this.value = "";
+        }
+        //获得焦点，把文本框内的颜色变黑
+        this.style.color = "#333";
+      };
+      //失去焦点事件 onblur
+      text.onblur = function () {
+        if (text.value === "") {
+          this.value = "手机";
+        }
+        //失去焦点，把文本框内的颜色变浅
+        this.style.color = "#999";
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>innerText</title>
+    <style>
+      div,
+      p {
+        width: 300px;
+        height: 30px;
+        line-height: 30px;
+        color: rgb(74, 132, 207);
+        background-color: rgb(206, 238, 165);
+      }
+    </style>
+  </head>
+  <body>
+    <button id="btn">显示当前系统时间</button>
+    <div>某个时间</div>
+    <p></p>
+    <script>
+      //当点击按钮div里面的文字会发生变化
+      //element.innerText 从起始位置到终止位置的内容，但它去除html标签，同时空格和换行也会被去掉
+      //1.获取元素
+      var btn = document.querySelector("button");
+      var div = document.querySelector("div");
+      //2.注册事件
+      btn.onclick = function () {
+        //点击后按指定格式获取时间
+        div.innerText = getDate();
+      };
+      //3.也可以不用添加事件，直接显示
+      var p = document.querySelector("p");
+      p.innerText = getDate();
+      //封装时间函数
+      function getDate() {
+        var date = new Date();
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        month = month >= 10 ? month : "0" + month;
+        var day = date.getDate();
+        day = day >= 10 ? day : "0" + day;
+        var week = date.getDay();
+        var arr = ["日", "一", "二", "三", "四", "五", "六"];
+        var hour = date.getHours();
+        hour = hour >= 10 ? hour : "0" + hour;
+        var minutes = date.getMinutes(); //得到当前分钟
+        minutes = minutes >= 10 ? minutes : "0" + minutes;
+        var seconds = date.getSeconds(); //得到当前秒
+        seconds = seconds >= 10 ? seconds : "0" + seconds;
+        return (
+          year +
+          "年" +
+          month +
+          "月" +
+          day +
+          "日" +
+          "星期" +
+          arr[week] +
+          hour +
+          ":" +
+          minutes +
+          ":" +
+          seconds
+        );
+      }
+    </script>
+  </body>
+</html>

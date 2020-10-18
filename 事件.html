@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>事件</title>
+  </head>
+  <body>
+    <button id="btn">阿妫</button>
+    <script>
+      //点击一个按钮，弹出一个对话框
+      // 事件由三部分组成：事件源、事件类型、事件处理程序（事件三要素）
+      //（1）事件源：事件被触发的对象  例如 按钮
+      var btn = document.getElementById("btn");
+      //(2）事件类型 即触发的方式，例：鼠标点击触发（onclick）/鼠标经过触发/键盘按下触发等
+      //(3）事件处理程序 通过一个函数赋值的方式完成
+      btn.onclick = function () {
+        alert("好的啊"); //点击按钮后弹出对话框
+      };
+    </script>
+  </body>
+</html>
