@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 200px;
+        height: 200px;
+        background-color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="father">
+      <div class="son"></div>
+    </div>
+    <script>
+      //1.捕获阶段：如果addEventListener 的第三个参数为true 则为捕获阶段**
+      //document->html->->body->father->son,
+      //因此下面的代码会先弹出father再弹出son
+      var son = document.querySelector(".son");
+      //   son.addEventListener(
+      //     "click",
+      //     function () {
+      //       alert("son");
+      //     },
+      //     true
+      //   );
+      //   var father = document.querySelector(".father");
+      //   son.addEventListener(
+      //     "click",
+      //     function () {
+      //       alert("father");
+      //     },
+      //     true
+      //   );
+
+      //2.冒泡阶段：如果addEventListener 的第三个参数为false或者省略 则为冒泡阶段
+      //son->father->body->html->document
+      //因此下面的代码会先弹出son再弹出father
+      var son = document.querySelector(".son");
+      son.addEventListener(
+        "click",
+        function (e) {
+          alert("son");
+          e.stopPropagation(); //阻止冒泡 e.stopPropagation() 方法
+          //低版本处理方式
+          //e.cancelBubble = true;
+          // //阻止冒泡的处理兼容性问题：
+          // if (e && e.stopPropagation) {
+          //   e.stopPropagation();
+          // } else {
+          //   window.e.cancelBubble = true;
+          // }
+        },
+        false
+      );
+      var father = document.querySelector(".father");
+      son.addEventListener(
+        "click",
+        function () {
+          alert("father");
+        },
+        false
+      );
+      document.addEventListener("click", function () {
+        alert("document");
+      });
+    </script>
+  </body>
+</html>

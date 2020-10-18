@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>事件委托</title>
+  </head>
+  <body>
+    <ul>
+      <li>点击</li>
+      <li>点击</li>
+      <li>点击</li>
+      <li>点击</li>
+    </ul>
+    <div>禁止操作</div>
+    <script>
+      var ul = document.querySelector("ul");
+      var div = document.querySelector("div");
+      ul.addEventListener("click", function (e) {
+        //给ul 设置的事件，但点击每个li 都会弹出对话框
+        alert("我是li");
+        //也可给li设置点击后li的背景颜色变换
+        e.target.style.backgroundColor = "pink";
+      });
+      div.addEventListener("selectstart", function (e) {
+        e.preventDefault();
+      });
+      //鼠标事件
+      document.addEventListener("click", function (e) {
+        //1.client : 鼠标在可视区的 x 和 y 坐标
+        console.log(e.clientX);
+        console.log(e.clientY);
+        //2.page : 鼠标在页面文档的 x 和 y 坐标
+        console.log(e.pageX);
+        console.log(e.pageY);
+        //3.screen 鼠标在电脑屏幕的 X 和 Y 坐标
+        console.log(e.screenX);
+        console.log(e.screenY);
+      });
+
+      //键盘事件
+      //1.onkeyup  释放某个键盘键时触发
+      document.onkeyup = function () {
+        console.log("我弹起了");
+      };
+      //  或  document.addEventListener('keyup',function(){
+      //       console.log("我弹起了");
+      //      })
+      //2.onkeydown  在键盘上按下某个键时触发
+      document.onkeydown = function () {
+        console.log("我弹起了");
+      };
+      //3.onkeypress  按下某个键盘键时触发。但不能识别功能键ctrl shift 左右箭头等。
+      document.onkeypress = function () {
+        console.log("我弹起了");
+      };
+
+      //键盘事件对象
+      //键盘事件对象的keyCode属性可以得到想要的ASCII码值
+      document.addEventListener("keyup", function (e) {
+        if (e.keyCode == 65) {
+          console.log("您按下了a键");
+        } else {
+          console.log("您没有按下a键");
+        }
+      });
+    </script>
+  </body>
+</html>

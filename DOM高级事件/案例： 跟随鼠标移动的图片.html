@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>案例： 跟随鼠标移动的图片</title>
+    <style>
+      img {
+        position: absolute;
+        width: 80px;
+        height: 80px;
+      }
+    </style>
+  </head>
+  <body>
+    <!--案例分析：
+        1. 鼠标不断地移动 使用鼠标事件 mousemove
+        2. 在页面中，给document 注册事件
+        3. 图片要移动距离，而且不占位置，使用绝对定位即可
+        4. 核心原理：每次鼠标移动，我没都会获得新的鼠标坐标，把这个 x 和 y 坐标设为图片 top left 值即可-->
+    <img src="images/pig.gif" alt="" />
+    <script>
+      var img = document.querySelector("img");
+      document.addEventListener("mousemove", function (e) {
+        //mousemove 只要移动鼠标，都会触发这个事件
+        var x = e.pageX;
+        var y = e.pageY;
+        //千万不要忘记给x y 加单位
+        img.style.left = x + "px";
+        img.style.top = y + "px";
+      });
+    </script>
+  </body>
+</html>

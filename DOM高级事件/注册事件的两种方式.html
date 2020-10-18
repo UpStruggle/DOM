@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>注册事件的两种方式</title>
+  </head>
+  <body>
+    <button>传统注册方式</button>
+    <button>方法监听事件注册方式</button>
+    <script>
+      var btns = document.querySelectorAll("button");
+      //1.传统注册方式
+      btns[0].onclick = function () {
+        alert("hi");
+      };
+      //2.方法监听事件注册方式 addEventListener
+      btns[1].addEventListener("click", function () {
+        alert(22);
+      });
+      btns[1].addEventListener("click", function () {
+        alert(33); //先弹出22 再弹出33 不会覆盖
+      });
+
+      //3. attachEvent ie9以前的版本支持
+      btn[2].attachEvent("onclick", function () {
+        alert(11); //ie9以前的版本才会执行，goole不支持
+      });
+
+      // 注册事件兼容性解决方案
+      function addEventListener(element, eventName, fn) {
+        // 判断当前浏览器是否支持 addEventListener 方法
+        if (element.addEventListener) {
+          element.addEventListener(eventName, fn); //第三个参数 默认为false
+        } else if (element.attachEvent) {
+          element.attachEvent("on" + eventName, fn);
+        } else {
+          // 相当于element.onclick = fn;
+          element["on" + eventName] = fn;
+        }
+      }
+    </script>
+  </body>
+</html>

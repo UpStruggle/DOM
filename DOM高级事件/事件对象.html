@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>事件对象</title>
+  </head>
+  <body>
+    <div>123</div>
+    <script>
+      var div = document.querySelector("div");
+      div.onclick = function (event) {
+        console.log(event);
+      };
+      div.addEventListener("click", function (e) {
+        console.log(e);
+        // console.log(window.event);
+        // e = e || window.event;  兼容性处理
+      });
+      // 1.event 就是一个事件对象 写到我们侦听函数的小括号里 当作形参
+      // 2.事件对象只有有了事件才会存在，它是系统给我们自动创建的，不需要我们传递参数
+      // 3.事件对象 是 我们事件的一系列相关数据的集合 跟事件相关的
+      // 比如鼠标点击里面就包含了鼠标的相关信息，比如鼠标坐标等，如果是键盘事件里面就包含的键盘事件的信息，比如：用户按下了哪个键
+      //4. 事件对象可以自己命名，一般用event
+      //5.存在兼容性问题 ie678 可以通过 window.event;
+
+      //e.target 与 this 对比
+      var div = document.querySelector("div");
+      var ul = document.querySelector("ul");
+      ul.addEventListener("click", function (e) {
+        //我们给ul绑定了事件  this就指向 ul
+        console.log(this);
+        // e.target 指向我们点击的那个对象  谁触发事件指向谁
+        console.log(e.target);
+      });
+
+      //e.srcElement 的 ie 兼容性处理
+      div.onclick = function (e) {
+        e = e || window.event;
+        var target = e.target || e.srcElement;
+        console.log(target);
+      };
+
+      //阻止事件默认行为 比如让链接不跳转
+      var a = document.querySelector("a");
+      a.addEventListener("click", function (e) {
+        e.preventDefault();
+      });
+      //传统注册方式 阻止事件默认行为
+      a.onclick = function () {
+        //普通浏览器 e.preventDefault()方法
+        e.preventDefault();
+        //低版本浏览器 ie678 returnValue属性
+        e.returnValue;
+        //也可以利用 return false 来阻止默认行为 没有兼容性问题
+        return false; //此方法虽然好 但return后面的代码将无法执行，而且仅限于传统注册行为
+      };
+
+      //
+    </script>
+  </body>
+</html>
