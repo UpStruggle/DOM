@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>节点操作</title>
+  </head>
+  <body>
+    <div class="box">
+      <span class="erweima"></span>
+    </div>
+    <ol>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ol>
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+    <script>
+      //1.父节点 parentNode
+      var erweima = document.querySelector(".erweima");
+      //以往得到box节点
+      var box = document.querySelector("box");
+      console.log(erweima.parentNode); //通过erweima的父节点得到box节点
+      //2.子节点
+      var ul = document.querySelector("ul");
+      console.log(ul.childNodes); //这样得到的是所有的子节点，包括 元素节点、文本节点等
+      //如果只想要获得里面的元素节点，还需要做出一些处理
+      for (var i = 0; i < ul.childNodes; i++) {
+        if (ul.childNodes[i].nodeType == 1) {
+          //ul.childNodes[i] 是元素节点
+          console.log(ul.childNodes[i]);
+        }
+      }
+      //上述方法过于麻烦
+      //children 获取所有子元素的节点 也是常用的开发技术
+      console.log(ul.children);
+      //firstChild 返回第一个子节点，无论是文本节点还是元素节点
+      //lastChild 返回最后一个子节点，无论是文本节点还是元素节点
+      //firstElementChild 返回第一个子元素节点  ie9才支持
+      console.log(ol.firstChild);
+      console.log(ol.lastChild);
+      console.log(ol.firstElementChild);
+      //特殊地：如果想获得第i个子元素的方法为：element.children[i]
+      var ol = document.querySelector("ol");
+      console.log(ol.children[0]); //获得第一个元素
+      console.log(ol.children[ol.children.length - 1]); //获得最后一个元素
+    </script>
+  </body>
+</html>

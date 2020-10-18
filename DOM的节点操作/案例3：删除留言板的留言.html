@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>删除留言板的留言</title>
+    <style>
+      textarea {
+        width: 200px;
+        height: 150px;
+        border: 1px solid violet;
+      }
+      li {
+        width: 200px;
+        padding: 5px;
+        margin: 15px 0;
+        background-color: yellowgreen;
+      }
+      li a {
+        float: right;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea name="" id=""></textarea>
+    <button>发布</button>
+    <ul></ul>
+    <script>
+      var btn = document.querySelector("button");
+      var text = document.querySelector("textarea");
+      var ul = document.querySelector("ul");
+      btn.onclick = function () {
+        if (text.value == null) {
+          alert("您输入的信息为空");
+          return false;
+        } else {
+          var li = document.createElement("li");
+          var a = document.createElement("a");
+          li.innerHTML = text.value + "<a href = 'javascript::'>删除</a>";
+          // href = 'javascript::'表示这是一个不会跳转的链接
+          ul.insertBefore(li, ul.children[0]);
+          //删除元素 删除的是当前链接的li 它的父亲
+          var as = document.querySelectorAll("a");
+          for (var i = 0; i < as.length; i++) {
+            as[i].onclick = function () {
+              //当前a所在的li  this.parentNode
+              ul.removeChild(this.parentNode);
+            };
+          }
+        }
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>下拉菜单</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      li {
+        list-style-type: none;
+      }
+      a {
+        text-decoration: none;
+      }
+      .nav {
+        margin: 100px auto;
+        width: 400px;
+      }
+      .nav > li {
+        position: relative;
+        display: inline-block;
+        height: 41px;
+        line-height: 41px;
+        text-align: center;
+        height: 41px;
+        width: 80px;
+      }
+      .nav > li:hover {
+        background-color: #eee;
+      }
+      .nav ul {
+        display: none; /*初始时下来菜单隐藏起来*/
+        position: absolute;
+        top: 41px;
+        left: 0;
+        width: 100%;
+      }
+      .nav ul li {
+        display: block;
+        margin: 0 -2.5px 0px -2.5px;
+        border-left: 1px solid #fecc58;
+        border-right: 1px solid #fecc58;
+        border-bottom: 1px solid #fecc58;
+      }
+      .nav ul li:hover {
+        background-color: #fff5da;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="nav">
+      <li>
+        <a href="#">微博</a>
+        <ul>
+          <li><a herf="#">关注</a></li>
+          <li><a herf="#">关注</a></li>
+          <li><a herf="#">关注</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">博客</a>
+        <ul>
+          <li><a herf="#">关注</a></li>
+          <li><a herf="#">@我</a></li>
+          <li><a herf="#">@我</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">邮箱</a>
+        <ul>
+          <li><a herf="#">普通邮箱</a></li>
+          <li><a herf="#">vip邮箱</a></li>
+          <li><a herf="#">企业邮箱</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">微博</a>
+        <ul>
+          <li><a herf="#">关注</a></li>
+          <li><a herf="#">关注</a></li>
+          <li><a herf="#">关注</a></li>
+        </ul>
+      </li>
+    </ul>
+    <script>
+      //分析：导航栏里面的li都要有鼠标经过效果，所以需要循环注册鼠标事件
+      //核心原理：当鼠标经过li里面的 第二个孩子 ul 显示，当鼠标离开 则ul隐藏
+      var nav = document.querySelector(".nav");
+      var lis = nav.children; //得到四个li
+      for (var i = 0; i < lis.length; i++) {
+        lis[i].onmouseover = function () {
+          this.children[1].style.display = "block";
+        };
+        lis[i].onmouseout = function () {
+          this.children[1].style.display = "none";
+        };
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>删除节点</title>
+  </head>
+  <body>
+    <button>删除</button>
+    <ul>
+      <li>熊大</li>
+      <li>熊二</li>
+      <li>光头强</li>
+    </ul>
+    <script>
+      var btn = document.querySelector("button");
+      var ul = document.querySelector("ul");
+      btn.onclick = function () {
+        if (ul.children.length == 0) {
+          this.disabled = true;
+          alert("没有节点了");
+        } else {
+          //node.removeChild(child)  删除一个子节点
+          ul.removeChild(ul.children[0]);
+          这种写法更方便;
+        }
+      };
+    </script>
+  </body>
+</html>

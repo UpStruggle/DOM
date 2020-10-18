@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>兄弟节点</title>
+  </head>
+  <body>
+    <div>div</div>
+    <span>span</span>
+    <script>
+      var div = document.querySelector("div");
+      //nextSibling 得到的是下一个兄弟节点，包括元素节点或者文本节点，找不到则返回空
+      console.log(div.nextSibling); //返回 span 的元素节点
+      //previousSibling 得到的是上一个兄弟节点，包括元素节点或者文本节点，找不到则返回空
+      console.log(div.previousSibling); //返回 null
+      //nextElementSibling  得到的是下一个兄弟元素节点(存在兼容性问题 ie9以上支持)
+      console.log(div.nextElementSiblinshang);
+      //previousElementSibling  得到的是上一个兄弟节点 (存在兼容性问题 ie9以上支持)
+      console.log(div.previousElementSibling);
+      //可以通过自己封装一个兼容性的函数
+      function getextElementSibling(element) {
+        var el = element;
+        while ((el = el.nextSibling)) {
+          if (el.nodeType === 1) {
+            return el;
+          }
+        }
+        return null;
+      }
+    </script>
+  </body>
+</html>

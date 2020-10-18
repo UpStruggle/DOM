@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>留言发布</title>
+    <style>
+      textarea {
+        width: 400px;
+        height: 260px;
+        border: 1px solid rgb(211, 131, 131);
+      }
+    </style>
+  </head>
+  <body>
+    <textarea name="" id=""></textarea>
+    <button>发布</button>
+    <ul></ul>
+    <script>
+      var btn = document.querySelector("button");
+      var text = document.querySelector("textarea");
+      var ul = document.querySelector("ul");
+      btn.onclick = function () {
+        if (text.value == null) {
+          alert("您没有输入内容");
+        } else {
+          //创建元素
+          var li = document.createElement("li");
+          //把文本域的值传递给新创建的节点
+          li.innerHTML = text.value;
+          //添加元素
+          //ul.appendChild(li); //新的放在后面
+          ul.insertBefore(li, ul.children[0]); //新的放在前面
+        }
+      };
+    </script>
+  </body>
+</html>

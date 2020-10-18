@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>节点复制</title>
+  </head>
+  <body>
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+    </ul>
+    <script>
+      var ul = document.querySelector("ul");
+      var lili = ul.children[0].cloneNode(); //复制ul里面的第一个li，传递给lili 但没有内容，因为是浅拷贝
+      ul.appendChild(lili); //把lili添加到ul的后面
+    </script>
+  </body>
+</html>
